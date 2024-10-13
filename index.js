@@ -42,10 +42,12 @@ function moveListItem(moveUp = false) {
 function saveList() {
     var data = {};
     var childs = list.children;
+    var replacer = [];
     for(var i = 0, size = childs.length; i < size; i++) {
         data[childs[i].children[0].value] = childs[i].children[1].value;
+        replacer.push(childs[i].children[0].value);
     }
-    showSaved.innerHTML = JSON.stringify(data, undefined, 2);
+    showSaved.innerHTML = JSON.stringify(data, replacer, 2);
 }
 
 if("content" in document.createElement("template")) {
